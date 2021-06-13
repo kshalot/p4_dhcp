@@ -1,0 +1,34 @@
+{
+  "program": "dhcp_snooping.p4",
+  "language": "p4-16",
+  "targets": {
+    "multiswitch": {
+      "bmv2_log": true,
+      "links": [
+        ["h1", "s1"],
+        ["h2", "s1"],
+        ["h3", "s1"]
+      ],
+      "hosts": {
+        "h1": {
+          "cmd": "echo Karol",
+          "wait": true
+        },
+        "h2": {
+          "cmd": "echo Karol 2",
+          "wait": true
+        },
+        "h3": {
+          "cmd": "echo Karol 3",
+          "wait": true
+        }
+      },
+      "switches": {
+        "s1": {
+          "commands": "dhcp_snooping.txt"
+        }
+      },
+      "cli": true
+    }
+  }
+}
