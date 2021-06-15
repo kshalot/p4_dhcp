@@ -1,5 +1,0 @@
-table_set_default forward_l2 _drop
-table_add forward_l2 set_dport 00:04:00:00:01:01 => 1
-table_add forward_l2 set_dport 00:04:00:00:02:01 => 2
-table_add forward_l2 set_dport 00:04:00:00:03:01 => 3
-table_add forward_l2 set_dport ff:ff:ff:ff:ff:ff => 2
