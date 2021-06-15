@@ -1,0 +1,58 @@
+{
+  "target": "bmv2",
+  "p4info": "build/ip_source_guard.p4.p4info.txt",
+  "bmv2_json": "build/ip_source_guard.json",
+  "table_entries": [
+    {
+      "table": "MyIngress.forward",
+      "default_action": true,
+      "action_name": "MyIngress.drop",
+      "action_params": { }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:01:11"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 1 }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:02:22"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 2 }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:03:33"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 3 }
+    },
+    {
+      "table": "MyIngress.valid_mac_ip",
+      "match": {
+        "hdr.ethernet.srcAddr": "08:00:00:00:01:11",
+        "hdr.ipv4.srcAddr": "10.0.0.1"
+      },
+      "action_name": "NoAction",
+      "action_params": {}
+    },
+    {
+      "table": "MyIngress.valid_mac_ip",
+      "match": {
+        "hdr.ethernet.srcAddr": "08:00:00:00:02:22",
+        "hdr.ipv4.srcAddr": "10.0.0.2"
+      },
+      "action_name": "NoAction",
+      "action_params": {}
+    },
+    {
+      "table": "MyIngress.valid_mac_ip",
+      "match": {
+        "hdr.ethernet.srcAddr": "08:00:00:00:03:33",
+        "hdr.ipv4.srcAddr": "10.0.0.3"
+      },
+      "action_name": "NoAction",
+      "action_params": {}
+    }
+  ]
+}

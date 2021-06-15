@@ -1,0 +1,31 @@
+{
+  "target": "bmv2",
+  "p4info": "build/dynamic_arp_inspection.p4.p4info.txt",
+  "bmv2_json": "build/dynamic_arp_inspection.json",
+  "table_entries": [
+    {
+      "table": "MyIngress.forward",
+      "default_action": true,
+      "action_name": "MyIngress.drop",
+      "action_params": { }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:01:11"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 1 }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:02:22"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 2 }
+    },
+    {
+      "table": "MyIngress.forward",
+      "match": { "hdr.ethernet.dstAddr": ["08:00:00:00:03:33"] },
+      "action_name": "MyIngress.send",
+      "action_params": { "port": 3 }
+    }
+  ]
+}

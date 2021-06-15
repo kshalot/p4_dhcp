@@ -1,0 +1,17 @@
+* Zbudowanie switcha l2 w P4
+** p4app magicznie zmienia adresy IP hostów
+** P4 nie obsługuje broadcastu MAC
+** p4app nie ładuje poprawnie zawartości tablic
+** jak zrobić dynamiczne dodawanie wpisów w tabeli?
+*** na podstawie przychodzących paczek trzeba robić mapowanie
+*** czy robi się to przy pomocy custom controllera?
+
+* Zbudowanie dhcp snoopingu w PR
+** uruchomienie serwerów DHCP
+** uczenie się par (mac, ip) - sam controller?
+
+* Zbudowanie Dynamic ARP Inspection
+** blokowanie pakietów ARP na podstawie tablicy dhcp_snooping
+
+* Zbudowanie IP source guard
+** blokowanie pakietów IP na podstawie tablicy dhcp_snooping
