@@ -1,10 +1,18 @@
-# Implementacja DHCP Snoopingu
+# Implementacja Dynamic ARP Inspection
 
 ## Wstęp
 
+
+Więcej informacji w dokumentacji Cisco:
+- https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/dynarp.html
+
 ## Opis skryptów
 
+- send_arp.sh - wysyła
+
 ## Cel laboratorium
+
+Celem laboratorium jest symulacja mechanizmu Dynamic ARP Inspection poprzez weryfikację odpowiedzi ARP z powiązaniami MAC/IP przechowywanymi w pamięci przełącznika.
 
 ## Uruchomienie niekompletnego kodu
  
@@ -54,6 +62,6 @@ Po wykonaniu ćwiczenia ruch inny niż ARP powinien działać tak samo, natomias
 
 ## Przebieg laboratorium
 
-1. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii.
+1. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii (w praktyce powiązania te tworzone byłyby dynamicznie).
 2. Logika parsera uzględniająca ARP jest już napisana - przeanalizuj ją.
 3. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli stworzonej w punkcie 1. Sprawdź czy mamy do czynienia z ruchem ARP oraz dodatkowo operacją ARP Response - odfiltruj niezaufany ruch.
