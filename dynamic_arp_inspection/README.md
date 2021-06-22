@@ -8,7 +8,7 @@ Dynamic ARP Inspection jest techniką weryfikacji pakietów ARP w sieci. Pozwala
 3. Atakujący widzi zapytanie ARP i preparuje pakiet ARP Response ze swoim adresem MAC.
 4. Klient otrzymuję odpowiedź i uznaje ją za poprawną. Od tej pory ruch X -> Y będzie kierowany do atakującego.
 
-Celem Dynamic ARP Inspection jest zapewnienie, że jedynie poprawne pakiety ARP Request i ARP Response są przekazywane w sieci. Osiąga to poprzez przechwytywanie wszystkich pakietów ARP 
+Celem Dynamic ARP Inspection jest zapewnienie, że jedynie poprawne pakiety ARP Request i ARP Response są przekazywane w sieci. Osiąga to poprzez przechwytywanie wszystkich pakietów ARP i walidowanie ich za pomocą rekordów przechowywanych w zaufanej bazie powiązań MAC - IP budowanej za pomocą DHCP Snoopingu. 
 
 Więcej informacji w dokumentacji Cisco:
 - https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/dynarp.html
@@ -71,6 +71,6 @@ Po wykonaniu ćwiczenia ruch inny niż ARP powinien działać tak samo, natomias
 
 ## Przebieg laboratorium
 
-1. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii (w praktyce powiązania te tworzone byłyby dynamicznie).
-2. Logika parsera uzględniająca ARP jest już napisana - przeanalizuj ją.
-3. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli stworzonej w punkcie 1. Sprawdź czy mamy do czynienia z ruchem ARP oraz dodatkowo operacją ARP Response - odfiltruj niezaufany ruch.
+1. Logika parsera uzględniająca ARP jest już napisana - przeanalizuj ją.
+2. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli zawierającej powiązania MAC-IP (punkt 3). Sprawdź czy mamy do czynienia z ruchem ARP oraz dodatkowo operacją ARP Response - odfiltruj niezaufany ruch.
+3. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii (w praktyce powiązania te tworzone byłyby dynamicznie).
