@@ -24,6 +24,13 @@ W ramach laboratorium udostępnione są dwa skrypty:
 - good_dhcp.sh - zaufane źródło ramek DHCP
 - evil_dhcp.sh - niezaufane źródło ramek DHCP
 
+Działają na prostej zasadzie - po uruchomieniu wysyłają spreparowany pakiet DHCP Offer. Skrypty są parametryzowane poprzez:
+- timeout
+- docelowy adres MAC
+- docelowy adres IP (będący "ofertą" serwera dla klienta)
+
+Wszystkie parametry są juz uzupełnione i przygotowane na potrzeby laboratorium.
+
 ## Cel laboratorium
 
 Celem laboratorium jest symulacja mechanizmu DHCP Snooping poprzez odflitrowanie ruchu DHCP pochodzącego z niezaufanego źródła - przychodzącego na port, na którym wiemy, że nie znajduje się serwer DHCP.
