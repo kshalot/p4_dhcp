@@ -2,9 +2,20 @@
 
 ## Wstęp
 
+IP Source Guard jest techniką walidacji pochodzenia pakietów IP. Pozwala na zwalczanie ataków typu IP spoofing polegających na podszywaniu się jednego hosta pod drugiego, poprzez wysłanie spreparowanych pakietów IP ze zmienionym adresem źródłowym.
+
+Podobnie do ARP Spoofing, polega na przechowywaniu w zaufanej bazie danych powiązań MAC - IP budowanej za pomocą DHCP Spoofingu. Gdy przełącznik otrzyma pakiet, sprawdza jego adres IP (ip_host) oraz adres MAC (mac_host) i sprawdza czy w bazie istnieje wiersz ip_host <-> mac_host.
+
 ## Opis skryptów
 
+W ramach laboratorium udostępnione są dwa skrypty:
+
+- good_ip.sh - zaufane źródło pakietów IP. Uruchomione na h1, wysyła h2 pakiet IP z własnym adresem źródłowym.
+- evil_ip.sh - niezaufane źródło pakietów IP. Uruchomione na h3, wysyła h2 pakiet IP z adresem źródłowym h1.
+
 ## Cel laboratorium
+
+Celem laboratorium jest symulacja mechanizmu IP Source Guard poprzez odfiltrowanie ruchu IP TODODOOTODO
 
 ## Uruchomienie niekompletnego kodu
  
@@ -67,3 +78,6 @@ Po wykonaniu ćwiczenia ruch inny niż IP powinien działać tak samo, natomiast
 Po wykonaniu ćwiczenia pingall powinien dalej działać prawidłowo.
 
 ## Przebieg laboratorium
+1. Logika parsera IPv4 jest już napisana - przeanalizuj ją.
+2. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli zawierającej powiązania MAC-IP (punkt 3). Sprawdź czy mamy do czynienia z ruchem IP - odfiltruj niezaufany ruch.
+3. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiguracją hostów w topologii (w praktyce powiązania te tworzone byłyby również dynamicznie).

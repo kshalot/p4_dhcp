@@ -73,4 +73,4 @@ Po wykonaniu ćwiczenia ruch inny niż ARP powinien działać tak samo, natomias
 
 1. Logika parsera uzględniająca ARP jest już napisana - przeanalizuj ją.
 2. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli zawierającej powiązania MAC-IP (punkt 3). Sprawdź czy mamy do czynienia z ruchem ARP oraz dodatkowo operacją ARP Response - odfiltruj niezaufany ruch.
-3. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii (w praktyce powiązania te tworzone byłyby również dynamicznie).
+3. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiguracją hostów w topologii (w praktyce powiązania te tworzone byłyby również dynamicznie).
