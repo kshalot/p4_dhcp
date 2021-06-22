@@ -4,7 +4,12 @@ Celem laboratorium jest zapoznanie się z technikami [DHCP Snooping](./dhcp_snoo
 
 ## Instalacja
 
-Do wykonania laboratium potrzebne będzie skonfigurowane środowisko z mininetem i P4 oraz sklonowane repozytorium [p4lang/tutorials](https://github.com/p4lang/tutorials/tree/master). W repozytorium znajduje się również instrukcja instalacji środowiska.
+Do wykonania laboratium potrzebne będzie skonfigurowane środowisko z mininetem i P4 oraz sklonowane repozytorium [p4lang/tutorials](https://github.com/p4lang/tutorials/tree/master). W repozytorium znajduje się również instrukcja instalacji środowiska. Do uruchomienia potrzebna jest również biblioteka `scapy` do języka `python`, aby ją zainstalować wykonaj:
+
+``` sh
+$ sudo apt install python3-pip
+$ pip3 install scapy
+```
 
 Po zainstalowaniu należy przekopiować foldery `dhcp_snooping`, `dynamic_arp_inspection` oraz `ip_source_guard` do folderu `exercises` repozytorium `p4lang/tutorials`.
 
