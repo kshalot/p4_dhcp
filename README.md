@@ -1,4 +1,22 @@
+# DIY-P4: Śledzenie
+
+Celem laboratorium jest zapoznanie się z technikami [DHCP Snooping](./dhcp_snooping), [Dynamic ARP Inspection](./dynamic_arp_inspection) oraz [IP Source Guard](./ip_source_guard) przy użyciu języka P4.
+
+## Instalacja
+
+Do wykonania laboratium potrzebne będzie skonfigurowane środowisko z mininetem i P4 oraz sklonowane repozytorium [p4lang/tutorials](https://github.com/p4lang/tutorials/tree/master). W repozytorium znajduje się również instrukcja instalacji środowiska.
+
+Po zainstalowaniu należy przekopiować foldery `dhcp_snooping`, `dynamic_arp_inspection` oraz `ip_source_guard` do folderu `exercises` repozytorium `p4lang/tutorials`.
+
+Instrukcje do poszczególnych ćwiczeń znajdują się wewnątrz tych folderów.
+
 ## Topologia
+
+W ćwiczeniach wykorzystana jest topologia zbudowana z jednego switcha P4 oraz trzech hostów.
+
+- h1: host "dobry", który wysyła poprawne pakiety
+- h2: host "neutralny", który będzie celem ataków
+- h3: host "zły", który wykonuje ataki
 
 ```
 ########              ########            ########
