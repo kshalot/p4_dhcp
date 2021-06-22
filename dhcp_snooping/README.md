@@ -4,14 +4,14 @@
 
 DHCP Snooping jest metodą filtracji pewnych typów ruchu DHCP na podstanie konfiguracji przełącznika. Pozwala na zwalczenie ataków typu man-in-the-middle. Prosty schemat takiego ataku to:
 
-1. Atakujący podłącza sie do sieci i udając serwer DHCP nasłuchuje na przychodzące wiadomości broadcast od klientów chcących zdobyć adres IP
+1. Atakujący podłącza sie do sieci i udając serwer DHCP nasłuchuje na przychodzące ramki broadcast od klientów chcących zdobyć adres IP
 2. Klient wysyła zapytanie z prośbą o przydzielenie adresu IP
 3. Atakujący odsyła mu lease ze spreparowaną konfiguracją (np. z adresem bramy domyślnej ustawionym na adres atakującego)
 4. Klient odbiera lease i zaczyna go używać
 
 DHCP Snooping polega na rozróżnieniu pomiędzy portami zaufanymi i niezaufanymi:
-- na port niezaufany mogą przyjść jedynie wiadomości typu DHCP Request i DHCP Discover (port kliencki). Pozostałe typy DHCP (Offer i ACK) są odrzucane. Nie da się więc wysłać odpowiedzi z konfiguracją na zapytanie klienta.
-- port zaufany przyjmuje dowolne wiadomości DHCP
+- na port niezaufany mogą przyjść jedynie wiadomości typu DHCP Request i DHCP Discover (port kliencki). Pozostałe typy DHCP (Offer i ACK) są odrzucane. Nie da się więc wysłać pakietu z konfiguracją dla klienta.
+- port zaufany przyjmuje dowolne pakiety DHCP
 
 Więcej szczegółów znajduje się w materiałach:
 - https://www.computernetworkingnotes.com/ccna-study-guide/how-dhcp-snooping-works-explained.html
@@ -21,8 +21,8 @@ Więcej szczegółów znajduje się w materiałach:
 
 W ramach laboratorium udostępnione są dwa skrypty:
 
-- good_dhcp.sh - zaufane źródło ramek DHCP. Uruchomione na h1, wysyła h2 ofertę adresu '10.0.0.22'
-- evil_dhcp.sh - niezaufane źródło ramek DHCP. Uruchomione na h3, wysyła h2 ofertę adresu '10.6.6.6'
+- good_dhcp.sh - zaufane źródło pakiet DHCP. Uruchomione na h1, wysyła h2 ofertę adresu '10.0.0.22'
+- evil_dhcp.sh - niezaufane źródło pakiet DHCP. Uruchomione na h3, wysyła h2 ofertę adresu '10.6.6.6'
 
 Działają na prostej zasadzie - po uruchomieniu wysyłają spreparowany pakiet DHCP Offer. Skrypty są parametryzowane poprzez:
 - timeout
