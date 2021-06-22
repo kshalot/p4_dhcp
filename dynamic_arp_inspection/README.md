@@ -2,13 +2,22 @@
 
 ## Wstęp
 
+Dynamic ARP Inspection jest techniką weryfikacji pakietów ARP w sieci. Pozwala na zwalczenie ataków typu ARP Cache Poisoning. Prostym schematem takiego ataku jest:
+1. Atakujący podłącza sie do sieci i nasłuchuje pakietów ARP
+2. Klient Y chce wysłać pakiet do hosta X znajdującego się w tej samej sieci. Wysyła więc zapytanie ARP w celu znalezienia jego adresu MAC.
+3. Atakujący widzi zapytanie ARP i preparuje pakiet ARP Response ze swoim adresem MAC.
+4. Klient otrzymuję odpowiedź i uznaje ją za poprawną. Od tej pory ruch X -> Y będzie kierowany do atakującego.
+
+Celem Dynamic ARP Inspection jest zapewnienie, że jedynie poprawne pakiety ARP Request i ARP Response są przekazywane w sieci. Osiąga to poprzez przechwytywanie wszystkich pakietów ARP 
 
 Więcej informacji w dokumentacji Cisco:
 - https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/dynarp.html
 
 ## Opis skryptów
 
-- send_arp.sh - wysyła
+- send_arp.sh - wysyła do h1 pakiet ARP Response z polem WHO_HAS ustawionym na adres h2.
+
+Implementacja znajduje się w pliku `arp_spoofer.py`. Parametry zostały już przygotowane na potrzeby laboratorium.
 
 ## Cel laboratorium
 
