@@ -21,8 +21,8 @@ Więcej szczegółów znajduje się w materiałach:
 
 W ramach laboratorium udostępnione są dwa skrypty:
 
-- good_dhcp.sh - zaufane źródło ramek DHCP
-- evil_dhcp.sh - niezaufane źródło ramek DHCP
+- good_dhcp.sh - zaufane źródło ramek DHCP. Uruchomione na h1, wysyła h2 ofertę adresu '10.0.0.22'
+- evil_dhcp.sh - niezaufane źródło ramek DHCP. Uruchomione na h3, wysyła h2 ofertę adresu '10.6.6.6'
 
 Działają na prostej zasadzie - po uruchomieniu wysyłają spreparowany pakiet DHCP Offer. Skrypty są parametryzowane poprzez:
 - timeout
