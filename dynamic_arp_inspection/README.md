@@ -54,8 +54,6 @@ Po wykonaniu ćwiczenia ruch inny niż ARP powinien działać tak samo, natomias
 
 ## Przebieg laboratorium
 
-1. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą zaufane porty DHCP (zaufany serwer DHCP znajduje się na porcie 1)
-2. Uzupełnij logikę parsera w pliku `dhcp_snooping.p4` - powinien on rozpoznawać Ethernet, IPv4 oraz UDP.
-3. Uzupełnij logikę ingress - sprawdź czy komunikacja odbywa się za pomocą protokołu DHCP (porty 67 i 68). Następnie zweryfikuj, czy ingress port zwarty jest w tabeli zaufanych portów.
-4. Uzupełnij logikę deparsera - poskładaj pakiet UDP ponownie do całości.
-
+1. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą klucze MAC, IP. Zdefiniuj w niej wiersze odpowiadające domyślnym konfiugracją hostów w topologii.
+2. Logika parsera uzględniająca ARP jest już napisana - przeanalizuj ją.
+3. Uzupełnij logikę ingress - dodaj matchowanie po odpowiednim kluczu w tabeli stworzonej w punkcie 1. Sprawdź czy mamy do czynienia z ruchem ARP oraz dodatkowo operacją ARP Response - odfiltruj niezaufany ruch.
