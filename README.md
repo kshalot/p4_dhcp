@@ -37,3 +37,7 @@ MAC: 08:00:00:00:01:11   |                MAC: 08:00:00:00:03:33
                       IP: 10.0.0.2
                       MAC: 08:00:00:00:02:22
 ```
+
+## Rozwiązania
+
+W folderze każdego zadania znajduje się folder `solutions`, który zawiera plik z rozwiązaniem `.p4` oraz plik z uzupełnionymi wpisami `s1-runtime.json`.
