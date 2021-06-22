@@ -2,7 +2,7 @@
 
 ## Wstęp
 
-DHCP Snooping jest metodą filtracji pewnych typów ruchu DHCP na podstanie konfiguracji przełącznika. Pozwala na zwalczenie ataków typu man-in-the-middle. Prosty schemat takiego ataku to:
+DHCP Snooping jest metodą filtracji pewnych typów ruchu DHCP na podstanie konfiguracji switcha. Pozwala na zwalczenie ataków typu man-in-the-middle. Prosty schemat takiego ataku to:
 
 1. Atakujący podłącza sie do sieci i udając serwer DHCP nasłuchuje na przychodzące ramki broadcast od klientów chcących zdobyć adres IP
 2. Klient wysyła zapytanie z prośbą o przydzielenie adresu IP
@@ -21,8 +21,8 @@ Więcej szczegółów znajduje się w materiałach:
 
 W ramach laboratorium udostępnione są dwa skrypty:
 
-- good_dhcp.sh - zaufane źródło pakiet DHCP. Uruchomione na h1, wysyła h2 ofertę adresu '10.0.0.22'
-- evil_dhcp.sh - niezaufane źródło pakiet DHCP. Uruchomione na h3, wysyła h2 ofertę adresu '10.6.6.6'
+- good_dhcp.sh - zaufane źródło pakietów DHCP. Uruchomione na h1, wysyła h2 ofertę adresu '10.0.0.22'
+- evil_dhcp.sh - niezaufane źródło pakietów DHCP. Uruchomione na h3, wysyła h2 ofertę adresu '10.6.6.6'
 
 Działają na prostej zasadzie - po uruchomieniu wysyłają spreparowany pakiet DHCP Offer. Skrypty są parametryzowane poprzez:
 - timeout
@@ -49,7 +49,7 @@ $ make
 mininet> pingall
 ```
  
-Wszystkie hosty powinny być w stanie się komunikować
+Wszystkie hosty powinny być w stanie się komunikować.
  
 3. Uruchom tcpdump na `h2`:
  
@@ -89,7 +89,6 @@ Powinno to wyglądać następująco:
 2 packets captured
 2 packets received by filter
 0 packets dropped by kernel
- 
 ```
  
 Po wykonaniu ćwiczenia ruch inny niż DHCP powinien działać tak samo, natomiast w wyniku tcpdump powinien być widoczny tylko pakiet od h1.
@@ -97,7 +96,7 @@ Po wykonaniu ćwiczenia ruch inny niż DHCP powinien działać tak samo, natomia
 ## Przebieg laboratorium
 
 1. Uzupełnij logikę parsera w pliku `dhcp_snooping.p4` - powinien on rozpoznawać Ethernet, IPv4 oraz UDP.
-2. Uzupełnij logikę ingress - sprawdź czy komunikacja odbywa się za pomocą protokołu DHCP (porty 67 i 68). Następnie zweryfikuj, czy ingress port zwarty jest w tabeli zaufanych portów.
-3. Uzupełnij logikę deparsera - poskładaj pakiet UDP ponownie do całości.
-4. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą zaufane porty DHCP (zaufany serwer DHCP znajduje się na porcie 1)
+2. Uzupełnij logikę ingress - sprawdź czy komunikacja odbywa się za pomocą protokołu DHCP (porty 67 i 68), pamiętaj, że blokujemy tylko ruch od serwera do klienta. Następnie zweryfikuj, czy ingress port zwarty jest w tabeli zaufanych portów.
+3. Uzupełnij logikę deparsera - poskładaj pakiet UDP.
+4. W pliku `topo/s1-runtime.json` zdefiniuj tabelę przechowującą zaufane porty DHCP (zaufany serwer DHCP znajduje się na porcie 1).
 
